@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quotes
+  labels:
+    app.kubernetes.io/name: quotes
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: quotes
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: quotes
+    spec:
+      containers:
+        - name: quotes
+          image: quotes
+          env:
+            - name: GOWON_BROKER
+              value: mosquitto:1883
